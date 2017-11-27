@@ -7,3 +7,12 @@ E:\OfficeWork\ResearchNServiceBus\Research-NServiceBus-ViewModel\NSeriviceBus.Co
 E:\OfficeWork\ResearchNServiceBus\Research-NServiceBus-ViewModel\NSeriviceBus.Common\obj\Debug\NSeriviceBus.Common.csproj.CoreCompileInputs.cache
 E:\OfficeWork\ResearchNServiceBus\Research-NServiceBus-ViewModel\NSeriviceBus.Common\obj\Debug\NSeriviceBus.Common.dll
 E:\OfficeWork\ResearchNServiceBus\Research-NServiceBus-ViewModel\NSeriviceBus.Common\obj\Debug\NSeriviceBus.Common.pdb
+E:\OfficeWork\ResearchNServiceBus\Research.NServiceBus.Common\NSeriviceBus.Common\bin\Debug\NSeriviceBus.Common.dll
+E:\OfficeWork\ResearchNServiceBus\Research.NServiceBus.Common\NSeriviceBus.Common\bin\Debug\NSeriviceBus.Common.pdb
+E:\OfficeWork\ResearchNServiceBus\Research.NServiceBus.Common\NSeriviceBus.Common\bin\Debug\NServiceBus.Core.dll
+E:\OfficeWork\ResearchNServiceBus\Research.NServiceBus.Common\NSeriviceBus.Common\bin\Debug\NServiceBus.Core.pdb
+E:\OfficeWork\ResearchNServiceBus\Research.NServiceBus.Common\NSeriviceBus.Common\bin\Debug\NServiceBus.Core.xml
+E:\OfficeWork\ResearchNServiceBus\Research.NServiceBus.Common\NSeriviceBus.Common\obj\Debug\NSeriviceBus.Common.csprojResolveAssemblyReference.cache
+E:\OfficeWork\ResearchNServiceBus\Research.NServiceBus.Common\NSeriviceBus.Common\obj\Debug\NSeriviceBus.Common.csproj.CoreCompileInputs.cache
+E:\OfficeWork\ResearchNServiceBus\Research.NServiceBus.Common\NSeriviceBus.Common\obj\Debug\NSeriviceBus.Common.dll
+E:\OfficeWork\ResearchNServiceBus\Research.NServiceBus.Common\NSeriviceBus.Common\obj\Debug\NSeriviceBus.Common.pdb

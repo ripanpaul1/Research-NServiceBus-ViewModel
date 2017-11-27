@@ -1,6 +1,6 @@
 ﻿using NServiceBus;
 
-namespace Messages
+namespace Lateetud.NServiceBus.Common
 {
     public class RowMessage :
         IEvent
