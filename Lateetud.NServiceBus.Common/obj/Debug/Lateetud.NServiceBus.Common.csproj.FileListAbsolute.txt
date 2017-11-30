@@ -8,9 +8,14 @@ E:\OfficeWork\ResearchNServiceBus\Research.NServiceBus.Common\Lateetud.NServiceB
 E:\OfficeWork\ResearchNServiceBus\Research.NServiceBus.Common\Lateetud.NServiceBus.Common\obj\Debug\Lateetud.NServiceBus.Common.pdb
 E:\OfficeWork\ResearchNServiceBus\Research.Lateetud.NServiceBus.Common\Lateetud.NServiceBus.Common\bin\Debug\Lateetud.NServiceBus.Common.dll
 E:\OfficeWork\ResearchNServiceBus\Research.Lateetud.NServiceBus.Common\Lateetud.NServiceBus.Common\bin\Debug\Lateetud.NServiceBus.Common.pdb
+E:\OfficeWork\ResearchNServiceBus\Research.Lateetud.NServiceBus.Common\Lateetud.NServiceBus.Common\bin\Debug\Newtonsoft.Json.dll
 E:\OfficeWork\ResearchNServiceBus\Research.Lateetud.NServiceBus.Common\Lateetud.NServiceBus.Common\bin\Debug\NServiceBus.Core.dll
+E:\OfficeWork\ResearchNServiceBus\Research.Lateetud.NServiceBus.Common\Lateetud.NServiceBus.Common\bin\Debug\NServiceBus.Persistence.Sql.dll
+E:\OfficeWork\ResearchNServiceBus\Research.Lateetud.NServiceBus.Common\Lateetud.NServiceBus.Common\bin\Debug\Newtonsoft.Json.xml
 E:\OfficeWork\ResearchNServiceBus\Research.Lateetud.NServiceBus.Common\Lateetud.NServiceBus.Common\bin\Debug\NServiceBus.Core.pdb
 E:\OfficeWork\ResearchNServiceBus\Research.Lateetud.NServiceBus.Common\Lateetud.NServiceBus.Common\bin\Debug\NServiceBus.Core.xml
+E:\OfficeWork\ResearchNServiceBus\Research.Lateetud.NServiceBus.Common\Lateetud.NServiceBus.Common\bin\Debug\NServiceBus.Persistence.Sql.pdb
+E:\OfficeWork\ResearchNServiceBus\Research.Lateetud.NServiceBus.Common\Lateetud.NServiceBus.Common\bin\Debug\NServiceBus.Persistence.Sql.xml
 E:\OfficeWork\ResearchNServiceBus\Research.Lateetud.NServiceBus.Common\Lateetud.NServiceBus.Common\obj\Debug\Lateetud.NServiceBus.Common.csprojResolveAssemblyReference.cache
 E:\OfficeWork\ResearchNServiceBus\Research.Lateetud.NServiceBus.Common\Lateetud.NServiceBus.Common\obj\Debug\Lateetud.NServiceBus.Common.csproj.CoreCompileInputs.cache
 E:\OfficeWork\ResearchNServiceBus\Research.Lateetud.NServiceBus.Common\Lateetud.NServiceBus.Common\obj\Debug\Lateetud.NServiceBus.Common.dll

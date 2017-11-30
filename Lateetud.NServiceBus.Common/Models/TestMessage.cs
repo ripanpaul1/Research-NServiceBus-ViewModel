@@ -2,7 +2,7 @@
 
 namespace Lateetud.NServiceBus.Common
 {
-    public class RowMessage :
+    public class TestMessage :
         IEvent
     {
         public string Message { get; set; }
