@@ -48,6 +48,10 @@ namespace Lateetud.NServiceBus.Common
             await endpointInstance.Publish(model)
                 .ConfigureAwait(false);
 
+            await endpointInstance.Stop()
+                        .ConfigureAwait(false);
+            endpointInstance = null;
+
             await Task.CompletedTask;
         }
         #endregion
@@ -113,14 +117,14 @@ namespace Lateetud.NServiceBus.Common
 
         #endregion
 
-        #region StartEndpoint
-        public async Task StartEndpoint(EndpointConfiguration endpointConfiguration)
+        #region CreateEndpointInitializePipeline
+        public async Task CreateEndpointInitializePipeline(EndpointConfiguration endpointConfiguration)
         {
             await Endpoint.Start(endpointConfiguration)
                         .ConfigureAwait(false);
         }
         #endregion
-
+        
         #region PublishedToBus
         public string PublishedToBus(EndpointConfiguration endpointConfiguration, object model)
         {
