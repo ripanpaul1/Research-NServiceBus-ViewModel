@@ -50,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\MessageType.cs" />
+    <Compile Include="Models\NECGeneralAgent\NECGeneralAgentResult.cs" />
+    <Compile Include="Models\NECGeneralAgent\NECGeneralAgent.cs" />
     <Compile Include="MsmqSqlDBConfiguration.cs" />
     <Compile Include="Models\PublisherEndpoints.cs" />
     <Compile Include="Models\TestMessage.cs" />
