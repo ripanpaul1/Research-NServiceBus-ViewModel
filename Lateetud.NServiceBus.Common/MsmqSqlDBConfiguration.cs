@@ -128,15 +128,8 @@ namespace Lateetud.NServiceBus.Common
         #region PublishedToBus
         public string PublishedToBus(EndpointConfiguration endpointConfiguration, object model)
         {
-            try
-            {
-                MessagePublished(endpointConfiguration, model).GetAwaiter().GetResult();
-                return "Published";
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
+            MessagePublished(endpointConfiguration, model).GetAwaiter().GetResult();
+            return "Published";
         }
         #endregion
 
