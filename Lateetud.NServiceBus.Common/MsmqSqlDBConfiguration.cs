@@ -14,7 +14,10 @@ namespace Lateetud.NServiceBus.Common
 
         #region Local Property
         private string connectionString { get; set; }
+        private string errorQueue { get; set; }
         private double cacheFor { get; set; }
+        private int numberOfRetries { get; set; }
+        private int timeIncrease { get; set; }
         #endregion
 
         #region MsmqSqlDBConfiguration
@@ -23,14 +26,86 @@ namespace Lateetud.NServiceBus.Common
         public MsmqSqlDBConfiguration(string connectionString)
         {
             this.connectionString = connectionString;
+            this.errorQueue = "error";
+            this.numberOfRetries = 5;
+            this.timeIncrease = 10;
             this.cacheFor = 1;
         }
         #endregion
 
         #region MsmqSqlDBConfiguration [2]
+        public MsmqSqlDBConfiguration(string connectionString, string errorQueue)
+        {
+            this.connectionString = connectionString;
+            this.errorQueue = errorQueue;
+            this.numberOfRetries = 5;
+            this.timeIncrease = 10;
+            this.cacheFor = 1;
+        }
+        #endregion
+
+        #region MsmqSqlDBConfiguration [3]
+        public MsmqSqlDBConfiguration(string connectionString, int numberOfRetries, int timeIncrease)
+        {
+            this.connectionString = connectionString;
+            this.errorQueue = "error";
+            this.numberOfRetries = numberOfRetries;
+            this.timeIncrease = timeIncrease;
+            this.cacheFor = 1;
+        }
+        #endregion
+
+        #region MsmqSqlDBConfiguration [4]
+        public MsmqSqlDBConfiguration(string connectionString, string errorQueue, int numberOfRetries, int timeIncrease)
+        {
+            this.connectionString = connectionString;
+            this.errorQueue = errorQueue;
+            this.numberOfRetries = numberOfRetries;
+            this.timeIncrease = timeIncrease;
+            this.cacheFor = 1;
+        }
+        #endregion
+
+        #region MsmqSqlDBConfiguration [5]
         public MsmqSqlDBConfiguration(string connectionString, double cacheFor)
         {
             this.connectionString = connectionString;
+            this.errorQueue = "error";
+            this.numberOfRetries = 5;
+            this.timeIncrease = 10;
+            this.cacheFor = cacheFor;
+        }
+        #endregion
+
+        #region MsmqSqlDBConfiguration [6]
+        public MsmqSqlDBConfiguration(string connectionString, string errorQueue, double cacheFor)
+        {
+            this.connectionString = connectionString;
+            this.errorQueue = errorQueue;
+            this.numberOfRetries = 5;
+            this.timeIncrease = 10;
+            this.cacheFor = cacheFor;
+        }
+        #endregion
+
+        #region MsmqSqlDBConfiguration [7]
+        public MsmqSqlDBConfiguration(string connectionString, int numberOfRetries, int timeIncrease, double cacheFor)
+        {
+            this.connectionString = connectionString;
+            this.errorQueue = "error";
+            this.numberOfRetries = numberOfRetries;
+            this.timeIncrease = timeIncrease;
+            this.cacheFor = cacheFor;
+        }
+        #endregion
+
+        #region MsmqSqlDBConfiguration [8]
+        public MsmqSqlDBConfiguration(string connectionString, string errorQueue, int numberOfRetries, int timeIncrease, double cacheFor)
+        {
+            this.connectionString = connectionString;
+            this.errorQueue = errorQueue;
+            this.numberOfRetries = numberOfRetries;
+            this.timeIncrease = timeIncrease;
             this.cacheFor = cacheFor;
         }
         #endregion
@@ -38,7 +113,7 @@ namespace Lateetud.NServiceBus.Common
         #endregion
 
         #region Private Methods
-        
+
         #region MessagePublished
         private async Task MessagePublished(EndpointConfiguration endpointConfiguration, object model)
         {
@@ -60,35 +135,80 @@ namespace Lateetud.NServiceBus.Common
 
         #region Public Methods
 
+        #region IsFailedQ
+        public bool IsFailedQ(IMessageHandlerContext context, string messageHeaderKey)
+        {
+            foreach (var messageHeader in context.MessageHeaders)
+                if (messageHeader.Key == messageHeaderKey) return true;
+            return false;
+        }
+        #endregion
+
         #region ConfigureEndpoint
 
         #region ConfigureEndpoint [1]
         public EndpointConfiguration ConfigureEndpoint(string EndpointName)
         {
-            return this.ConfigureEndpoint(EndpointName, this.cacheFor, null);
+            return this.ConfigureEndpoint(EndpointName, this.errorQueue, this.cacheFor, null);
         }
         #endregion
 
         #region ConfigureEndpoint [2]
-        public EndpointConfiguration ConfigureEndpoint(string EndpointName, double cacheFor)
+        public EndpointConfiguration ConfigureEndpoint(string EndpointName, string errorQueue)
         {
-            return this.ConfigureEndpoint(EndpointName, cacheFor, null);
+            return this.ConfigureEndpoint(EndpointName, errorQueue, this.cacheFor, null);
         }
         #endregion
 
         #region ConfigureEndpoint [3]
-        public EndpointConfiguration ConfigureEndpoint(string EndpointName, List<PublisherEndpoints> publisherEndpoints)
+        public EndpointConfiguration ConfigureEndpoint(string EndpointName, double cacheFor)
         {
-            return this.ConfigureEndpoint(EndpointName, this.cacheFor, publisherEndpoints);
+            return this.ConfigureEndpoint(EndpointName, this.errorQueue, cacheFor, null);
         }
         #endregion
 
         #region ConfigureEndpoint [4]
+        public EndpointConfiguration ConfigureEndpoint(string EndpointName, string errorQueue, double cacheFor)
+        {
+            return this.ConfigureEndpoint(EndpointName, errorQueue, cacheFor, null);
+        }
+        #endregion
+
+        #region ConfigureEndpoint [5]
+        public EndpointConfiguration ConfigureEndpoint(string EndpointName, List<PublisherEndpoints> publisherEndpoints)
+        {
+            return this.ConfigureEndpoint(EndpointName, this.errorQueue, this.cacheFor, publisherEndpoints);
+        }
+        #endregion
+
+        #region ConfigureEndpoint [6]
+        public EndpointConfiguration ConfigureEndpoint(string EndpointName, string errorQueue, List<PublisherEndpoints> publisherEndpoints)
+        {
+            return this.ConfigureEndpoint(EndpointName, errorQueue, this.cacheFor, publisherEndpoints);
+        }
+        #endregion
+
+        #region ConfigureEndpoint [7]
         public EndpointConfiguration ConfigureEndpoint(string EndpointName, double cacheFor, List<PublisherEndpoints> publisherEndpoints)
+        {
+            return this.ConfigureEndpoint(EndpointName, this.errorQueue, this.cacheFor, publisherEndpoints);
+        }
+        #endregion
+
+        #region ConfigureEndpoint [8]
+        public EndpointConfiguration ConfigureEndpoint(string EndpointName, string errorQueue, double cacheFor, List<PublisherEndpoints> publisherEndpoints)
         {
             var endpointConfiguration = new EndpointConfiguration(EndpointName);
             endpointConfiguration.EnableInstallers();
-            endpointConfiguration.SendFailedMessagesTo("error");
+            if (errorQueue != null) endpointConfiguration.SendFailedMessagesTo(errorQueue);
+
+            var recoverability = endpointConfiguration.Recoverability();
+            recoverability.Delayed(
+                customizations: delayed =>
+                {
+                    delayed.NumberOfRetries(this.numberOfRetries);
+                    delayed.TimeIncrease(TimeSpan.FromSeconds(this.timeIncrease));
+                });
 
             var persistence = endpointConfiguration.UsePersistence<SqlPersistence>();
             persistence.SqlVariant(SqlVariant.MsSqlServer);

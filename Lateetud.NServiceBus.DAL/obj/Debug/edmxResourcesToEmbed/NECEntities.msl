@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NECGeneralAgentModelStoreContainer" CdmEntityContainer="NECGeneralAgentEntities">
+    <FunctionImportMapping FunctionImportName="GeneralAgent_InsertUpdate" FunctionName="NECGeneralAgentModel.Store.GeneralAgent_InsertUpdate" />
+    <FunctionImportMapping FunctionImportName="GeneralAgentByGeneralAgentID_Select" FunctionName="NECGeneralAgentModel.Store.GeneralAgentByGeneralAgentID_Select">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="NECGeneralAgentModel.GeneralAgentByGeneralAgentID_Select_Result">
+          <ScalarProperty Name="GeneralAgentID" ColumnName="GeneralAgentID" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="GeneralAgents">
+      <EntityTypeMapping TypeName="NECGeneralAgentModel.GeneralAgent">
+        <MappingFragment StoreEntitySet="GeneralAgent">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="GeneralAgentID" ColumnName="GeneralAgentID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

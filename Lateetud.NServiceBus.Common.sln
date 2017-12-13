@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lateetud.NServiceBus.Common", "Lateetud.NServiceBus.Common\Lateetud.NServiceBus.Common.csproj", "{05195BEC-9217-483D-836A-B7A353A0015E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lateetud.NServiceBus.DAL", "Lateetud.NServiceBus.DAL\Lateetud.NServiceBus.DAL.csproj", "{B489455A-D6DE-4DB2-ACD7-C92AC03E5AC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{05195BEC-9217-483D-836A-B7A353A0015E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05195BEC-9217-483D-836A-B7A353A0015E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05195BEC-9217-483D-836A-B7A353A0015E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B489455A-D6DE-4DB2-ACD7-C92AC03E5AC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B489455A-D6DE-4DB2-ACD7-C92AC03E5AC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B489455A-D6DE-4DB2-ACD7-C92AC03E5AC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B489455A-D6DE-4DB2-ACD7-C92AC03E5AC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

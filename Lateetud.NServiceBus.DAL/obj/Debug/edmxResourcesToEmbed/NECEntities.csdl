@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NECGeneralAgentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="NECGeneralAgentEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="GeneralAgent_InsertUpdate" ReturnType="Collection(Int32)">
+      <Parameter Name="Mode" Mode="In" Type="String" />
+      <Parameter Name="GeneralAgentID" Mode="In" Type="String" />
+      <Parameter Name="Message" Mode="In" Type="String" />
+      <Parameter Name="Status" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GeneralAgentByGeneralAgentID_Select" ReturnType="Collection(NECGeneralAgentModel.GeneralAgentByGeneralAgentID_Select_Result)">
+      <Parameter Name="GeneralAgentID" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="GeneralAgents" EntityType="NECGeneralAgentModel.GeneralAgent" />
+  </EntityContainer>
+  <ComplexType Name="GeneralAgentByGeneralAgentID_Select_Result">
+    <Property Type="String" Name="GeneralAgentID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Message" Nullable="true" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+    <Property Type="Int64" Name="ID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="GeneralAgent">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GeneralAgentID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+</Schema>
