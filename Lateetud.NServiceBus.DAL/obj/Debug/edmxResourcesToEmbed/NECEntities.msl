@@ -9,12 +9,14 @@
           <ScalarProperty Name="Message" ColumnName="Message" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="QueueMessageId" ColumnName="QueueMessageId" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
     <EntitySetMapping Name="GeneralAgents">
       <EntityTypeMapping TypeName="NECGeneralAgentModel.GeneralAgent">
         <MappingFragment StoreEntitySet="GeneralAgent">
+          <ScalarProperty Name="QueueMessageId" ColumnName="QueueMessageId" />
           <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
           <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
           <ScalarProperty Name="Status" ColumnName="Status" />

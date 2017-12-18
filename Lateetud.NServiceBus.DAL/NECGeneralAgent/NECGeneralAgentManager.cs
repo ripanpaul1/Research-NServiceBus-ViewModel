@@ -8,27 +8,27 @@ namespace Lateetud.NServiceBus.DAL.NECGeneralAgent
 {
     public class NECGeneralAgentManager : BaseManager
     {
-        public void Insert(string messageId, string message)
+        public void Insert(string generalAgentId, string messageId, string message)
         {
             using (var context = new NECGeneralAgentEntities())
             {
-                context.GeneralAgent_InsertUpdate("I", messageId, message, "Pending");
+                context.GeneralAgent_InsertUpdate("I", generalAgentId, messageId, message, "Pending");
             }
         }
 
-        public object Select(string messageId)
+        public object Select(string generalAgentId)
         {
             using (var context = new NECGeneralAgentEntities())
             {
-                return context.GeneralAgentByGeneralAgentID_Select(messageId).FirstOrDefault();
+                return context.GeneralAgentByGeneralAgentID_Select(generalAgentId).FirstOrDefault();
             }
         }
 
-        public void Update(string messageId, string status)
+        public void Update(string generalAgentId, string messageId, string status)
         {
             using (var context = new NECGeneralAgentEntities())
             {
-                context.GeneralAgent_InsertUpdate("U", messageId, null, status);
+                context.GeneralAgent_InsertUpdate("U", generalAgentId, messageId, null, status);
             }
         }
     }

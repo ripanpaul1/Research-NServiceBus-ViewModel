@@ -17,5 +17,6 @@ namespace Lateetud.NServiceBus.DAL
         public string Message { get; set; }
         public string Status { get; set; }
         public long ID { get; set; }
+        public string QueueMessageId { get; set; }
     }
 }

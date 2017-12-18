@@ -29,7 +29,7 @@ namespace Lateetud.NServiceBus.DAL
     
         public virtual DbSet<GeneralAgent> GeneralAgents { get; set; }
     
-        public virtual ObjectResult<Nullable<int>> GeneralAgent_InsertUpdate(string mode, string generalAgentID, string message, string status)
+        public virtual ObjectResult<Nullable<int>> GeneralAgent_InsertUpdate(string mode, string generalAgentID, string queueMessageId, string message, string status)
         {
             var modeParameter = mode != null ?
                 new ObjectParameter("Mode", mode) :
@@ -39,6 +39,10 @@ namespace Lateetud.NServiceBus.DAL
                 new ObjectParameter("GeneralAgentID", generalAgentID) :
                 new ObjectParameter("GeneralAgentID", typeof(string));
     
+            var queueMessageIdParameter = queueMessageId != null ?
+                new ObjectParameter("QueueMessageId", queueMessageId) :
+                new ObjectParameter("QueueMessageId", typeof(string));
+    
             var messageParameter = message != null ?
                 new ObjectParameter("Message", message) :
                 new ObjectParameter("Message", typeof(string));
@@ -47,7 +51,7 @@ namespace Lateetud.NServiceBus.DAL
                 new ObjectParameter("Status", status) :
                 new ObjectParameter("Status", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GeneralAgent_InsertUpdate", modeParameter, generalAgentIDParameter, messageParameter, statusParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GeneralAgent_InsertUpdate", modeParameter, generalAgentIDParameter, queueMessageIdParameter, messageParameter, statusParameter);
         }
     
         public virtual ObjectResult<GeneralAgentByGeneralAgentID_Select_Result> GeneralAgentByGeneralAgentID_Select(string generalAgentID)

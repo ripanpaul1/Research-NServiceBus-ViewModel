@@ -15,10 +15,12 @@
           <Property Name="Status" Type="varchar" MaxLength="50" />
           <Property Name="CreateDateTime" Type="datetime" />
           <Property Name="UpdateDateTime" Type="datetime" />
+          <Property Name="QueueMessageId" Type="varchar" MaxLength="50" />
         </EntityType>
         <Function Name="GeneralAgent_InsertUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Mode" Type="char" Mode="In" />
           <Parameter Name="GeneralAgentID" Type="varchar" Mode="In" />
+          <Parameter Name="QueueMessageId" Type="varchar" Mode="In" />
           <Parameter Name="Message" Type="varchar(max)" Mode="In" />
           <Parameter Name="Status" Type="varchar" Mode="In" />
         </Function>
@@ -36,6 +38,7 @@
           <FunctionImport Name="GeneralAgent_InsertUpdate" ReturnType="Collection(Int32)">
             <Parameter Name="Mode" Mode="In" Type="String" />
             <Parameter Name="GeneralAgentID" Mode="In" Type="String" />
+            <Parameter Name="QueueMessageId" Mode="In" Type="String" />
             <Parameter Name="Message" Mode="In" Type="String" />
             <Parameter Name="Status" Mode="In" Type="String" />
           </FunctionImport>
@@ -49,6 +52,7 @@
           <Property Type="String" Name="Message" Nullable="true" />
           <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
           <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="String" Name="QueueMessageId" Nullable="true" MaxLength="50" />
         </ComplexType>
         <EntityType Name="GeneralAgent">
           <Key>
@@ -60,6 +64,7 @@
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CreateDateTime" Type="DateTime" Precision="3" />
           <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="QueueMessageId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -75,12 +80,14 @@
                 <ScalarProperty Name="Message" ColumnName="Message" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="QueueMessageId" ColumnName="QueueMessageId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <EntitySetMapping Name="GeneralAgents">
             <EntityTypeMapping TypeName="NECGeneralAgentModel.GeneralAgent">
               <MappingFragment StoreEntitySet="GeneralAgent">
+                <ScalarProperty Name="QueueMessageId" ColumnName="QueueMessageId" />
                 <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
                 <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
                 <ScalarProperty Name="Status" ColumnName="Status" />

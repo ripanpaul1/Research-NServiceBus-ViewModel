@@ -10,10 +10,12 @@
     <Property Name="Status" Type="varchar" MaxLength="50" />
     <Property Name="CreateDateTime" Type="datetime" />
     <Property Name="UpdateDateTime" Type="datetime" />
+    <Property Name="QueueMessageId" Type="varchar" MaxLength="50" />
   </EntityType>
   <Function Name="GeneralAgent_InsertUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Mode" Type="char" Mode="In" />
     <Parameter Name="GeneralAgentID" Type="varchar" Mode="In" />
+    <Parameter Name="QueueMessageId" Type="varchar" Mode="In" />
     <Parameter Name="Message" Type="varchar(max)" Mode="In" />
     <Parameter Name="Status" Type="varchar" Mode="In" />
   </Function>
