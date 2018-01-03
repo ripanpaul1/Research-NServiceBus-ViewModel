@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'E:\OfficeWork\ResearchNServiceBus\Research.Lateetud.NServiceBus.Subscriber\Lateetud.NServiceBus.DAL\NECEntities.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\OfficeWork\ResearchNServiceBus\Research.Lateetud.NServiceBus.Common\Lateetud.NServiceBus.DAL\NECEntities.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -11,12 +11,14 @@ namespace Lateetud.NServiceBus.DAL
 {
     using System;
     
-    public partial class GeneralAgentByGeneralAgentID_Select_Result
+    public partial class Queue_Select_Result
     {
-        public string GeneralAgentID { get; set; }
-        public string Message { get; set; }
-        public string Status { get; set; }
-        public long ID { get; set; }
-        public string QueueMessageId { get; set; }
+        public long QueueID { get; set; }
+        public string QueueName { get; set; }
+        public long PublisherQueueID { get; set; }
+        public string PublisherQueueName { get; set; }
+        public string MessageType { get; set; }
+        public bool IsPublisher { get; set; }
+        public bool Inactive { get; set; }
     }
 }

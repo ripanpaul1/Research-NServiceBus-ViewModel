@@ -10,13 +10,16 @@
 namespace Lateetud.NServiceBus.DAL
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class GeneralAgentByGeneralAgentID_Select_Result
+    public partial class QueueMap
     {
-        public string GeneralAgentID { get; set; }
-        public string Message { get; set; }
-        public string Status { get; set; }
-        public long ID { get; set; }
-        public string QueueMessageId { get; set; }
+        public long QueueMapID { get; set; }
+        public long SubscriberQueueID { get; set; }
+        public long PublisherQueueID { get; set; }
+        public string MessageType { get; set; }
+    
+        public virtual Queue Queue { get; set; }
+        public virtual Queue Queue1 { get; set; }
     }
 }
