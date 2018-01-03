@@ -26,5 +26,38 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Queues">
+      <EntityTypeMapping TypeName="NECGeneralAgentModel.Queue">
+        <MappingFragment StoreEntitySet="Queue">
+          <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+          <ScalarProperty Name="IsPublisher" ColumnName="IsPublisher" />
+          <ScalarProperty Name="QueueName" ColumnName="QueueName" />
+          <ScalarProperty Name="QueueID" ColumnName="QueueID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QueueMaps">
+      <EntityTypeMapping TypeName="NECGeneralAgentModel.QueueMap">
+        <MappingFragment StoreEntitySet="QueueMap">
+          <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+          <ScalarProperty Name="PublisherQueueID" ColumnName="PublisherQueueID" />
+          <ScalarProperty Name="SubscriberQueueID" ColumnName="SubscriberQueueID" />
+          <ScalarProperty Name="QueueMapID" ColumnName="QueueMapID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Queue_Select" FunctionName="NECGeneralAgentModel.Store.Queue_Select">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="NECGeneralAgentModel.Queue_Select_Result">
+          <ScalarProperty Name="QueueID" ColumnName="QueueID" />
+          <ScalarProperty Name="QueueName" ColumnName="QueueName" />
+          <ScalarProperty Name="PublisherQueueID" ColumnName="PublisherQueueID" />
+          <ScalarProperty Name="PublisherQueueName" ColumnName="PublisherQueueName" />
+          <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+          <ScalarProperty Name="IsPublisher" ColumnName="IsPublisher" />
+          <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

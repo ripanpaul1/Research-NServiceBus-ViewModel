@@ -243,8 +243,14 @@ namespace Lateetud.NServiceBus.Common
             await Endpoint.Start(endpointConfiguration)
                         .ConfigureAwait(false);
         }
+
+        //public IMessageSession CreateEndpointInitializePipeline(EndpointConfiguration endpointConfiguration)
+        //{
+        //    var messageSession = Endpoint.Start(endpointConfiguration).GetAwaiter().GetResult();
+        //    return messageSession;
+        //}
         #endregion
-        
+
         #region PublishedToBus
         public string PublishedToBus(EndpointConfiguration endpointConfiguration, object model)
         {

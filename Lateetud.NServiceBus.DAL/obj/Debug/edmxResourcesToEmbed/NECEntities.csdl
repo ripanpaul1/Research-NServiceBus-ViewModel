@@ -12,6 +12,17 @@
       <Parameter Name="GeneralAgentID" Mode="In" Type="String" />
     </FunctionImport>
     <EntitySet Name="GeneralAgents" EntityType="NECGeneralAgentModel.GeneralAgent" />
+    <EntitySet Name="Queues" EntityType="NECGeneralAgentModel.Queue" />
+    <EntitySet Name="QueueMaps" EntityType="NECGeneralAgentModel.QueueMap" />
+    <AssociationSet Name="FK_QueueMap_PublisherQueue" Association="NECGeneralAgentModel.FK_QueueMap_PublisherQueue">
+      <End Role="Queue" EntitySet="Queues" />
+      <End Role="QueueMap" EntitySet="QueueMaps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QueueMap_SubscriberQueue" Association="NECGeneralAgentModel.FK_QueueMap_SubscriberQueue">
+      <End Role="Queue" EntitySet="Queues" />
+      <End Role="QueueMap" EntitySet="QueueMaps" />
+    </AssociationSet>
+    <FunctionImport Name="Queue_Select" ReturnType="Collection(NECGeneralAgentModel.Queue_Select_Result)" />
   </EntityContainer>
   <ComplexType Name="GeneralAgentByGeneralAgentID_Select_Result">
     <Property Type="String" Name="GeneralAgentID" Nullable="true" MaxLength="50" />
@@ -32,4 +43,59 @@
     <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
     <Property Name="QueueMessageId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
+  <EntityType Name="Queue">
+    <Key>
+      <PropertyRef Name="QueueID" />
+    </Key>
+    <Property Name="QueueID" Type="Int64" Nullable="false" />
+    <Property Name="QueueName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IsPublisher" Type="Boolean" Nullable="false" />
+    <Property Name="Inactive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="QueueMaps" Relationship="NECGeneralAgentModel.FK_QueueMap_PublisherQueue" FromRole="Queue" ToRole="QueueMap" />
+    <NavigationProperty Name="QueueMaps1" Relationship="NECGeneralAgentModel.FK_QueueMap_SubscriberQueue" FromRole="Queue" ToRole="QueueMap" />
+  </EntityType>
+  <EntityType Name="QueueMap">
+    <Key>
+      <PropertyRef Name="QueueMapID" />
+    </Key>
+    <Property Name="QueueMapID" Type="Int64" Nullable="false" />
+    <Property Name="SubscriberQueueID" Type="Int64" Nullable="false" />
+    <Property Name="PublisherQueueID" Type="Int64" Nullable="false" />
+    <Property Name="MessageType" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Queue" Relationship="NECGeneralAgentModel.FK_QueueMap_PublisherQueue" FromRole="QueueMap" ToRole="Queue" />
+    <NavigationProperty Name="Queue1" Relationship="NECGeneralAgentModel.FK_QueueMap_SubscriberQueue" FromRole="QueueMap" ToRole="Queue" />
+  </EntityType>
+  <Association Name="FK_QueueMap_PublisherQueue">
+    <End Type="NECGeneralAgentModel.Queue" Role="Queue" Multiplicity="1" />
+    <End Type="NECGeneralAgentModel.QueueMap" Role="QueueMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Queue">
+        <PropertyRef Name="QueueID" />
+      </Principal>
+      <Dependent Role="QueueMap">
+        <PropertyRef Name="PublisherQueueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QueueMap_SubscriberQueue">
+    <End Type="NECGeneralAgentModel.Queue" Role="Queue" Multiplicity="1" />
+    <End Type="NECGeneralAgentModel.QueueMap" Role="QueueMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Queue">
+        <PropertyRef Name="QueueID" />
+      </Principal>
+      <Dependent Role="QueueMap">
+        <PropertyRef Name="SubscriberQueueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="Queue_Select_Result">
+    <Property Type="Int64" Name="QueueID" Nullable="false" />
+    <Property Type="String" Name="QueueName" Nullable="false" MaxLength="500" />
+    <Property Type="Int64" Name="PublisherQueueID" Nullable="false" />
+    <Property Type="String" Name="PublisherQueueName" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="MessageType" Nullable="false" MaxLength="500" />
+    <Property Type="Boolean" Name="IsPublisher" Nullable="false" />
+    <Property Type="Boolean" Name="Inactive" Nullable="false" />
+  </ComplexType>
 </Schema>

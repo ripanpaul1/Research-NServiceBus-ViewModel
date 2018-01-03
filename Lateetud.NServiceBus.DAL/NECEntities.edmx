@@ -17,6 +17,48 @@
           <Property Name="UpdateDateTime" Type="datetime" />
           <Property Name="QueueMessageId" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Queue">
+          <Key>
+            <PropertyRef Name="QueueID" />
+          </Key>
+          <Property Name="QueueID" Type="bigint" Nullable="false" />
+          <Property Name="QueueName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="IsPublisher" Type="bit" Nullable="false" />
+          <Property Name="Inactive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QueueMap">
+          <Key>
+            <PropertyRef Name="QueueMapID" />
+          </Key>
+          <Property Name="QueueMapID" Type="bigint" Nullable="false" />
+          <Property Name="SubscriberQueueID" Type="bigint" Nullable="false" />
+          <Property Name="PublisherQueueID" Type="bigint" Nullable="false" />
+          <Property Name="MessageType" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <Association Name="FK_QueueMap_PublisherQueue">
+          <End Role="Queue" Type="Self.Queue" Multiplicity="1" />
+          <End Role="QueueMap" Type="Self.QueueMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Queue">
+              <PropertyRef Name="QueueID" />
+            </Principal>
+            <Dependent Role="QueueMap">
+              <PropertyRef Name="PublisherQueueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QueueMap_SubscriberQueue">
+          <End Role="Queue" Type="Self.Queue" Multiplicity="1" />
+          <End Role="QueueMap" Type="Self.QueueMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Queue">
+              <PropertyRef Name="QueueID" />
+            </Principal>
+            <Dependent Role="QueueMap">
+              <PropertyRef Name="SubscriberQueueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="GeneralAgent_InsertUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Mode" Type="char" Mode="In" />
           <Parameter Name="GeneralAgentID" Type="varchar" Mode="In" />
@@ -27,8 +69,19 @@
         <Function Name="GeneralAgentByGeneralAgentID_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="GeneralAgentID" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="Queue_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="NECGeneralAgentModelStoreContainer">
           <EntitySet Name="GeneralAgent" EntityType="Self.GeneralAgent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Queue" EntityType="Self.Queue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QueueMap" EntityType="Self.QueueMap" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_QueueMap_PublisherQueue" Association="Self.FK_QueueMap_PublisherQueue">
+            <End Role="Queue" EntitySet="Queue" />
+            <End Role="QueueMap" EntitySet="QueueMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QueueMap_SubscriberQueue" Association="Self.FK_QueueMap_SubscriberQueue">
+            <End Role="Queue" EntitySet="Queue" />
+            <End Role="QueueMap" EntitySet="QueueMap" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -46,6 +99,17 @@
           <Parameter Name="GeneralAgentID" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="GeneralAgents" EntityType="NECGeneralAgentModel.GeneralAgent" />
+          <EntitySet Name="Queues" EntityType="NECGeneralAgentModel.Queue" />
+          <EntitySet Name="QueueMaps" EntityType="NECGeneralAgentModel.QueueMap" />
+          <AssociationSet Name="FK_QueueMap_PublisherQueue" Association="NECGeneralAgentModel.FK_QueueMap_PublisherQueue">
+            <End Role="Queue" EntitySet="Queues" />
+            <End Role="QueueMap" EntitySet="QueueMaps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QueueMap_SubscriberQueue" Association="NECGeneralAgentModel.FK_QueueMap_SubscriberQueue">
+            <End Role="Queue" EntitySet="Queues" />
+            <End Role="QueueMap" EntitySet="QueueMaps" />
+          </AssociationSet>
+          <FunctionImport Name="Queue_Select" ReturnType="Collection(NECGeneralAgentModel.Queue_Select_Result)" />
         </EntityContainer>
         <ComplexType Name="GeneralAgentByGeneralAgentID_Select_Result">
           <Property Type="String" Name="GeneralAgentID" Nullable="true" MaxLength="50" />
@@ -66,6 +130,61 @@
           <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
           <Property Name="QueueMessageId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Queue">
+          <Key>
+            <PropertyRef Name="QueueID" />
+          </Key>
+          <Property Name="QueueID" Type="Int64" Nullable="false" />
+          <Property Name="QueueName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsPublisher" Type="Boolean" Nullable="false" />
+          <Property Name="Inactive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="QueueMaps" Relationship="NECGeneralAgentModel.FK_QueueMap_PublisherQueue" FromRole="Queue" ToRole="QueueMap" />
+          <NavigationProperty Name="QueueMaps1" Relationship="NECGeneralAgentModel.FK_QueueMap_SubscriberQueue" FromRole="Queue" ToRole="QueueMap" />
+        </EntityType>
+        <EntityType Name="QueueMap">
+          <Key>
+            <PropertyRef Name="QueueMapID" />
+          </Key>
+          <Property Name="QueueMapID" Type="Int64" Nullable="false" />
+          <Property Name="SubscriberQueueID" Type="Int64" Nullable="false" />
+          <Property Name="PublisherQueueID" Type="Int64" Nullable="false" />
+          <Property Name="MessageType" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Queue" Relationship="NECGeneralAgentModel.FK_QueueMap_PublisherQueue" FromRole="QueueMap" ToRole="Queue" />
+          <NavigationProperty Name="Queue1" Relationship="NECGeneralAgentModel.FK_QueueMap_SubscriberQueue" FromRole="QueueMap" ToRole="Queue" />
+        </EntityType>
+        <Association Name="FK_QueueMap_PublisherQueue">
+          <End Type="NECGeneralAgentModel.Queue" Role="Queue" Multiplicity="1" />
+          <End Type="NECGeneralAgentModel.QueueMap" Role="QueueMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Queue">
+              <PropertyRef Name="QueueID" />
+            </Principal>
+            <Dependent Role="QueueMap">
+              <PropertyRef Name="PublisherQueueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QueueMap_SubscriberQueue">
+          <End Type="NECGeneralAgentModel.Queue" Role="Queue" Multiplicity="1" />
+          <End Type="NECGeneralAgentModel.QueueMap" Role="QueueMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Queue">
+              <PropertyRef Name="QueueID" />
+            </Principal>
+            <Dependent Role="QueueMap">
+              <PropertyRef Name="SubscriberQueueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="Queue_Select_Result">
+          <Property Type="Int64" Name="QueueID" Nullable="false" />
+          <Property Type="String" Name="QueueName" Nullable="false" MaxLength="500" />
+          <Property Type="Int64" Name="PublisherQueueID" Nullable="false" />
+          <Property Type="String" Name="PublisherQueueName" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="MessageType" Nullable="false" MaxLength="500" />
+          <Property Type="Boolean" Name="IsPublisher" Nullable="false" />
+          <Property Type="Boolean" Name="Inactive" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -97,6 +216,39 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Queues">
+            <EntityTypeMapping TypeName="NECGeneralAgentModel.Queue">
+              <MappingFragment StoreEntitySet="Queue">
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+                <ScalarProperty Name="IsPublisher" ColumnName="IsPublisher" />
+                <ScalarProperty Name="QueueName" ColumnName="QueueName" />
+                <ScalarProperty Name="QueueID" ColumnName="QueueID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QueueMaps">
+            <EntityTypeMapping TypeName="NECGeneralAgentModel.QueueMap">
+              <MappingFragment StoreEntitySet="QueueMap">
+                <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+                <ScalarProperty Name="PublisherQueueID" ColumnName="PublisherQueueID" />
+                <ScalarProperty Name="SubscriberQueueID" ColumnName="SubscriberQueueID" />
+                <ScalarProperty Name="QueueMapID" ColumnName="QueueMapID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Queue_Select" FunctionName="NECGeneralAgentModel.Store.Queue_Select">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NECGeneralAgentModel.Queue_Select_Result">
+                <ScalarProperty Name="QueueID" ColumnName="QueueID" />
+                <ScalarProperty Name="QueueName" ColumnName="QueueName" />
+                <ScalarProperty Name="PublisherQueueID" ColumnName="PublisherQueueID" />
+                <ScalarProperty Name="PublisherQueueName" ColumnName="PublisherQueueName" />
+                <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+                <ScalarProperty Name="IsPublisher" ColumnName="IsPublisher" />
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

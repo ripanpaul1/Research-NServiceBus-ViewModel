@@ -28,6 +28,8 @@ namespace Lateetud.NServiceBus.DAL
         }
     
         public virtual DbSet<GeneralAgent> GeneralAgents { get; set; }
+        public virtual DbSet<Queue> Queues { get; set; }
+        public virtual DbSet<QueueMap> QueueMaps { get; set; }
     
         public virtual ObjectResult<Nullable<int>> GeneralAgent_InsertUpdate(string mode, string generalAgentID, string queueMessageId, string message, string status)
         {
@@ -61,6 +63,11 @@ namespace Lateetud.NServiceBus.DAL
                 new ObjectParameter("GeneralAgentID", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GeneralAgentByGeneralAgentID_Select_Result>("GeneralAgentByGeneralAgentID_Select", generalAgentIDParameter);
+        }
+    
+        public virtual ObjectResult<Queue_Select_Result> Queue_Select()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Queue_Select_Result>("Queue_Select");
         }
     }
 }
