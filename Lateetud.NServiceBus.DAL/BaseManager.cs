@@ -8,8 +8,8 @@ namespace Lateetud.NServiceBus.DAL
 {
     interface BaseManager
     {
-        void Insert(string messageId, string message);
-        object Select(string messageId);
-        void Update(string messageId, string status);
+        void Insert(string generalAgentId, string messageId, string message);
+        object Select(string generalAgentId);
+        void Update(string generalAgentId, string messageId, string status);
     }
 }

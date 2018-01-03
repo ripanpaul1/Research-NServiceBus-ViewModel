@@ -20,5 +20,6 @@ namespace Lateetud.NServiceBus.DAL
         public string Status { get; set; }
         public Nullable<System.DateTime> CreateDateTime { get; set; }
         public Nullable<System.DateTime> UpdateDateTime { get; set; }
+        public string QueueMessageId { get; set; }
     }
 }
