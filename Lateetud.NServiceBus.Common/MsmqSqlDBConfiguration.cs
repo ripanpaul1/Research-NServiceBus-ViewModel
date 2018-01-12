@@ -200,7 +200,7 @@ namespace Lateetud.NServiceBus.Common
         {
             var endpointConfiguration = new EndpointConfiguration(EndpointName);
             endpointConfiguration.EnableInstallers();
-            if (errorQueue != null) endpointConfiguration.SendFailedMessagesTo(errorQueue);
+            if (!string.IsNullOrWhiteSpace(errorQueue)) endpointConfiguration.SendFailedMessagesTo(errorQueue);
 
             var recoverability = endpointConfiguration.Recoverability();
             recoverability.Delayed(

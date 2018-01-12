@@ -7,19 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lateetud.NServiceBus.DAL
+namespace Lateetud.NServiceBus.DAL.ef
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class GeneralAgent
+    public partial class SmartRpa
     {
-        public long ID { get; set; }
-        public string GeneralAgentID { get; set; }
+        public long SmartRpaID { get; set; }
+        public string ServiceName { get; set; }
+        public string MessageId { get; set; }
+        public string RequestId { get; set; }
         public string Message { get; set; }
         public string Status { get; set; }
         public Nullable<System.DateTime> CreateDateTime { get; set; }
         public Nullable<System.DateTime> UpdateDateTime { get; set; }
-        public string QueueMessageId { get; set; }
     }
 }

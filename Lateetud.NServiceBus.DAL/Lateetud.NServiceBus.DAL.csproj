@@ -49,61 +49,58 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseManager.cs" />
-    <Compile Include="GeneralAgent.cs">
-      <DependentUpon>NECEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GeneralAgentByGeneralAgentID_Select_Result.cs">
-      <DependentUpon>NECEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NECEntities.Context.cs">
+    <Compile Include="ef\SmartEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>NECEntities.Context.tt</DependentUpon>
+      <DependentUpon>SmartEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="NECEntities.cs">
+    <Compile Include="ef\SmartEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>NECEntities.tt</DependentUpon>
+      <DependentUpon>SmartEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="NECEntities.Designer.cs">
+    <Compile Include="ef\SmartEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>NECEntities.edmx</DependentUpon>
+      <DependentUpon>SmartEntities.edmx</DependentUpon>
     </Compile>
-    <Compile Include="NECGeneralAgent\NECGeneralAgentManager.cs" />
+    <Compile Include="ef\SmartOcr.cs">
+      <DependentUpon>SmartEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ef\SmartOcrByRequestId_Select_Result.cs">
+      <DependentUpon>SmartEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ef\SmartRpa.cs">
+      <DependentUpon>SmartEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ef\SmartRpaByRequestId_Select_Result.cs">
+      <DependentUpon>SmartEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Queue.cs">
-      <DependentUpon>NECEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="QueueMap.cs">
-      <DependentUpon>NECEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Queue_Select_Result.cs">
-      <DependentUpon>NECEntities.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Smart\SmartRpaManager.cs" />
+    <Compile Include="Smart\SmartOcrManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="NECEntities.edmx">
+    <EntityDeploy Include="ef\SmartEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>NECEntities.Designer.cs</LastGenOutput>
+      <LastGenOutput>SmartEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="NECEntities.edmx.diagram">
-      <DependentUpon>NECEntities.edmx</DependentUpon>
+    <None Include="ef\SmartEntities.edmx.diagram">
+      <DependentUpon>SmartEntities.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="NECEntities.Context.tt">
+    <Content Include="ef\SmartEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>NECEntities.edmx</DependentUpon>
-      <LastGenOutput>NECEntities.Context.cs</LastGenOutput>
+      <DependentUpon>SmartEntities.edmx</DependentUpon>
+      <LastGenOutput>SmartEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="NECEntities.tt">
+    <Content Include="ef\SmartEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>NECEntities.edmx</DependentUpon>
-      <LastGenOutput>NECEntities.cs</LastGenOutput>
+      <DependentUpon>SmartEntities.edmx</DependentUpon>
+      <LastGenOutput>SmartEntities.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

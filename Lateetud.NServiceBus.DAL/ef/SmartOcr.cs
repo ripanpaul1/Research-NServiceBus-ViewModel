@@ -7,16 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lateetud.NServiceBus.DAL
+namespace Lateetud.NServiceBus.DAL.ef
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class GeneralAgentByGeneralAgentID_Select_Result
+    public partial class SmartOcr
     {
-        public string GeneralAgentID { get; set; }
+        public long SmartOcrID { get; set; }
+        public string ServiceName { get; set; }
+        public string MessageId { get; set; }
+        public string RequestId { get; set; }
         public string Message { get; set; }
         public string Status { get; set; }
-        public long ID { get; set; }
-        public string QueueMessageId { get; set; }
+        public Nullable<System.DateTime> CreateDateTime { get; set; }
+        public Nullable<System.DateTime> UpdateDateTime { get; set; }
     }
 }

@@ -7,19 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lateetud.NServiceBus.DAL
+namespace Lateetud.NServiceBus.DAL.ef
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class QueueMap
+    public partial class SmartRpaByRequestId_Select_Result
     {
-        public long QueueMapID { get; set; }
-        public long SubscriberQueueID { get; set; }
-        public long PublisherQueueID { get; set; }
-        public string MessageType { get; set; }
-    
-        public virtual Queue Queue { get; set; }
-        public virtual Queue Queue1 { get; set; }
+        public string RequestId { get; set; }
+        public string Message { get; set; }
+        public string Status { get; set; }
     }
 }

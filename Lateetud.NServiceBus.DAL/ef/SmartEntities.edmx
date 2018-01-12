@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SMARTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="SmartOcr">
+          <Key>
+            <PropertyRef Name="SmartOcrID" />
+          </Key>
+          <Property Name="SmartOcrID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceName" Type="varchar" MaxLength="100" />
+          <Property Name="MessageId" Type="varchar" MaxLength="100" />
+          <Property Name="RequestId" Type="varchar" MaxLength="100" />
+          <Property Name="Message" Type="varchar(max)" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="CreateDateTime" Type="datetime" />
+          <Property Name="UpdateDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SmartRpa">
+          <Key>
+            <PropertyRef Name="SmartRpaID" />
+          </Key>
+          <Property Name="SmartRpaID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceName" Type="varchar" MaxLength="100" />
+          <Property Name="MessageId" Type="varchar" MaxLength="100" />
+          <Property Name="RequestId" Type="varchar" MaxLength="100" />
+          <Property Name="Message" Type="varchar(max)" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="CreateDateTime" Type="datetime" />
+          <Property Name="UpdateDateTime" Type="datetime" />
+        </EntityType>
+        <Function Name="SmartOcr_InsertUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Mode" Type="char" Mode="In" />
+          <Parameter Name="ServiceName" Type="varchar" Mode="In" />
+          <Parameter Name="MessageId" Type="varchar" Mode="In" />
+          <Parameter Name="RequestId" Type="varchar" Mode="In" />
+          <Parameter Name="Message" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Status" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SmartOcrByRequestId_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RequestId" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SmartRpa_InsertUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Mode" Type="char" Mode="In" />
+          <Parameter Name="ServiceName" Type="varchar" Mode="In" />
+          <Parameter Name="MessageId" Type="varchar" Mode="In" />
+          <Parameter Name="RequestId" Type="varchar" Mode="In" />
+          <Parameter Name="Message" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Status" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SmartRpaByRequestId_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RequestId" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="SMARTModelStoreContainer">
+          <EntitySet Name="SmartOcr" EntityType="Self.SmartOcr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SmartRpa" EntityType="Self.SmartRpa" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SMARTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="SmartOcr">
+          <Key>
+            <PropertyRef Name="SmartOcrID" />
+          </Key>
+          <Property Name="SmartOcrID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MessageId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RequestId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="SmartRpa">
+          <Key>
+            <PropertyRef Name="SmartRpaID" />
+          </Key>
+          <Property Name="SmartRpaID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MessageId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RequestId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="SMARTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="SmartOcrs" EntityType="Self.SmartOcr" />
+          <EntitySet Name="SmartRpas" EntityType="Self.SmartRpa" />
+          <FunctionImport Name="SmartOcr_InsertUpdate" ReturnType="Collection(Int32)">
+            <Parameter Name="Mode" Mode="In" Type="String" />
+            <Parameter Name="ServiceName" Mode="In" Type="String" />
+            <Parameter Name="MessageId" Mode="In" Type="String" />
+            <Parameter Name="RequestId" Mode="In" Type="String" />
+            <Parameter Name="Message" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SmartOcrByRequestId_Select" ReturnType="Collection(SMARTModel.SmartOcrByRequestId_Select_Result)">
+            <Parameter Name="RequestId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SmartRpa_InsertUpdate" ReturnType="Collection(Int32)">
+            <Parameter Name="Mode" Mode="In" Type="String" />
+            <Parameter Name="ServiceName" Mode="In" Type="String" />
+            <Parameter Name="MessageId" Mode="In" Type="String" />
+            <Parameter Name="RequestId" Mode="In" Type="String" />
+            <Parameter Name="Message" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SmartRpaByRequestId_Select" ReturnType="Collection(SMARTModel.SmartRpaByRequestId_Select_Result)">
+            <Parameter Name="RequestId" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SmartOcrByRequestId_Select_Result">
+          <Property Type="String" Name="RequestId" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Message" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SmartRpaByRequestId_Select_Result">
+          <Property Type="String" Name="RequestId" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Message" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SMARTModelStoreContainer" CdmEntityContainer="SMARTEntities">
+          <EntitySetMapping Name="SmartOcrs">
+            <EntityTypeMapping TypeName="SMARTModel.SmartOcr">
+              <MappingFragment StoreEntitySet="SmartOcr">
+                <ScalarProperty Name="SmartOcrID" ColumnName="SmartOcrID" />
+                <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+                <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+                <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+                <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SmartRpas">
+            <EntityTypeMapping TypeName="SMARTModel.SmartRpa">
+              <MappingFragment StoreEntitySet="SmartRpa">
+                <ScalarProperty Name="SmartRpaID" ColumnName="SmartRpaID" />
+                <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+                <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+                <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+                <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SmartOcr_InsertUpdate" FunctionName="SMARTModel.Store.SmartOcr_InsertUpdate" />
+          <FunctionImportMapping FunctionImportName="SmartOcrByRequestId_Select" FunctionName="SMARTModel.Store.SmartOcrByRequestId_Select">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SMARTModel.SmartOcrByRequestId_Select_Result">
+                <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SmartRpa_InsertUpdate" FunctionName="SMARTModel.Store.SmartRpa_InsertUpdate" />
+          <FunctionImportMapping FunctionImportName="SmartRpaByRequestId_Select" FunctionName="SMARTModel.Store.SmartRpaByRequestId_Select">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SMARTModel.SmartRpaByRequestId_Select_Result">
+                <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

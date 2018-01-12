@@ -7,18 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lateetud.NServiceBus.DAL
+namespace Lateetud.NServiceBus.DAL.ef
 {
     using System;
     
-    public partial class Queue_Select_Result
+    public partial class SmartOcrByRequestId_Select_Result
     {
-        public long QueueID { get; set; }
-        public string QueueName { get; set; }
-        public long PublisherQueueID { get; set; }
-        public string PublisherQueueName { get; set; }
-        public string MessageType { get; set; }
-        public bool IsPublisher { get; set; }
-        public bool Inactive { get; set; }
+        public string RequestId { get; set; }
+        public string Message { get; set; }
+        public string Status { get; set; }
     }
 }

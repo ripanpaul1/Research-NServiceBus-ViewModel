@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SMARTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="SmartOcr">
+    <Key>
+      <PropertyRef Name="SmartOcrID" />
+    </Key>
+    <Property Name="SmartOcrID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ServiceName" Type="varchar" MaxLength="100" />
+    <Property Name="MessageId" Type="varchar" MaxLength="100" />
+    <Property Name="RequestId" Type="varchar" MaxLength="100" />
+    <Property Name="Message" Type="varchar(max)" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CreateDateTime" Type="datetime" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SmartRpa">
+    <Key>
+      <PropertyRef Name="SmartRpaID" />
+    </Key>
+    <Property Name="SmartRpaID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ServiceName" Type="varchar" MaxLength="100" />
+    <Property Name="MessageId" Type="varchar" MaxLength="100" />
+    <Property Name="RequestId" Type="varchar" MaxLength="100" />
+    <Property Name="Message" Type="varchar(max)" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CreateDateTime" Type="datetime" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <Function Name="SmartOcr_InsertUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Mode" Type="char" Mode="In" />
+    <Parameter Name="ServiceName" Type="varchar" Mode="In" />
+    <Parameter Name="MessageId" Type="varchar" Mode="In" />
+    <Parameter Name="RequestId" Type="varchar" Mode="In" />
+    <Parameter Name="Message" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Status" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SmartOcrByRequestId_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RequestId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SmartRpa_InsertUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Mode" Type="char" Mode="In" />
+    <Parameter Name="ServiceName" Type="varchar" Mode="In" />
+    <Parameter Name="MessageId" Type="varchar" Mode="In" />
+    <Parameter Name="RequestId" Type="varchar" Mode="In" />
+    <Parameter Name="Message" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Status" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SmartRpaByRequestId_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RequestId" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="SMARTModelStoreContainer">
+    <EntitySet Name="SmartOcr" EntityType="Self.SmartOcr" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SmartRpa" EntityType="Self.SmartRpa" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

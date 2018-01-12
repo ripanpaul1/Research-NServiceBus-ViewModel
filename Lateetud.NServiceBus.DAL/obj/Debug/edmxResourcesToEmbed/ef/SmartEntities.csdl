@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SMARTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="SmartOcr">
+    <Key>
+      <PropertyRef Name="SmartOcrID" />
+    </Key>
+    <Property Name="SmartOcrID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ServiceName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MessageId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RequestId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SmartRpa">
+    <Key>
+      <PropertyRef Name="SmartRpaID" />
+    </Key>
+    <Property Name="SmartRpaID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ServiceName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MessageId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RequestId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="SMARTEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="SmartOcrs" EntityType="Self.SmartOcr" />
+    <EntitySet Name="SmartRpas" EntityType="Self.SmartRpa" />
+    <FunctionImport Name="SmartOcr_InsertUpdate" ReturnType="Collection(Int32)">
+      <Parameter Name="Mode" Mode="In" Type="String" />
+      <Parameter Name="ServiceName" Mode="In" Type="String" />
+      <Parameter Name="MessageId" Mode="In" Type="String" />
+      <Parameter Name="RequestId" Mode="In" Type="String" />
+      <Parameter Name="Message" Mode="In" Type="String" />
+      <Parameter Name="Status" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SmartOcrByRequestId_Select" ReturnType="Collection(SMARTModel.SmartOcrByRequestId_Select_Result)">
+      <Parameter Name="RequestId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SmartRpa_InsertUpdate" ReturnType="Collection(Int32)">
+      <Parameter Name="Mode" Mode="In" Type="String" />
+      <Parameter Name="ServiceName" Mode="In" Type="String" />
+      <Parameter Name="MessageId" Mode="In" Type="String" />
+      <Parameter Name="RequestId" Mode="In" Type="String" />
+      <Parameter Name="Message" Mode="In" Type="String" />
+      <Parameter Name="Status" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SmartRpaByRequestId_Select" ReturnType="Collection(SMARTModel.SmartRpaByRequestId_Select_Result)">
+      <Parameter Name="RequestId" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="SmartOcrByRequestId_Select_Result">
+    <Property Type="String" Name="RequestId" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Message" Nullable="true" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SmartRpaByRequestId_Select_Result">
+    <Property Type="String" Name="RequestId" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Message" Nullable="true" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

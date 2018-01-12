@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SMARTModelStoreContainer" CdmEntityContainer="SMARTEntities">
+    <EntitySetMapping Name="SmartOcrs">
+      <EntityTypeMapping TypeName="SMARTModel.SmartOcr">
+        <MappingFragment StoreEntitySet="SmartOcr">
+          <ScalarProperty Name="SmartOcrID" ColumnName="SmartOcrID" />
+          <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+          <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+          <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SmartRpas">
+      <EntityTypeMapping TypeName="SMARTModel.SmartRpa">
+        <MappingFragment StoreEntitySet="SmartRpa">
+          <ScalarProperty Name="SmartRpaID" ColumnName="SmartRpaID" />
+          <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+          <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+          <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SmartOcr_InsertUpdate" FunctionName="SMARTModel.Store.SmartOcr_InsertUpdate" />
+    <FunctionImportMapping FunctionImportName="SmartOcrByRequestId_Select" FunctionName="SMARTModel.Store.SmartOcrByRequestId_Select">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SMARTModel.SmartOcrByRequestId_Select_Result">
+          <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SmartRpa_InsertUpdate" FunctionName="SMARTModel.Store.SmartRpa_InsertUpdate" />
+    <FunctionImportMapping FunctionImportName="SmartRpaByRequestId_Select" FunctionName="SMARTModel.Store.SmartRpaByRequestId_Select">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SMARTModel.SmartRpaByRequestId_Select_Result">
+          <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
